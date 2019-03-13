@@ -21,7 +21,13 @@
 
                     <section class="section">
                         <form action="" @submit.prevent="add">
-                            <ProductVariation />
+                            <ProductVariation
+                                v-for="(variations, type) in product.variations"
+                                :type="type"
+                                :variations="variations"
+                                :key="type"
+                                />
+
                         </form>
                     </section>
                 </div>
