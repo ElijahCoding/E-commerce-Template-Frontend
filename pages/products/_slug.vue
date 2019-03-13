@@ -31,7 +31,7 @@
 
                                 {{ form }}
 
-                            <div class="field has-addons">
+                            <div class="field has-addons" v-if="form.variation">
                                 <div class="control">
                                     <div class="select is-fullwidth">
                                         <select name="" id="">

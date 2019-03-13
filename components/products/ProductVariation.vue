@@ -5,7 +5,7 @@
         </label>
         <div class="control">
             <div class="select is-fullwidth">
-                <select @change="changed($event, type)">
+                <select :value="selectedVariationId" @change="changed($event, type)">
                     <option value="">Please choose</option>
                     <option
                         v-for="variation in variations"
@@ -34,6 +34,10 @@
             variations: {
               required: true,
               type: Array
+            },
+            value: {
+                required: false,
+                default: ''
             }
         },
 
@@ -50,6 +54,16 @@
                 }
 
                 return variation
+            }
+        },
+
+        computed: {
+            selectedVariationId () {
+                if (!this.findVariation(this.value.id)) {
+                    return ''
+                }
+
+                return this.value.id
             }
         }
 
