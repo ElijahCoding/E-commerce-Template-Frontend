@@ -5,7 +5,7 @@
         </label>
         <div class="control">
             <div class="select is-fullwidth">
-                <select name="" id="">
+                <select @change="changed($event, type)">
                     <option value="">Please choose</option>
                     <option
                         v-for="variation in variations"
@@ -34,6 +34,22 @@
             variations: {
               required: true,
               type: Array
+            }
+        },
+
+        methods: {
+            changed (event, type) {
+                this.$emit('input', this.findVariation(event.target.value))
+            },
+
+            findVariation (id) {
+                let variation = this.variations.find(v => v.id == id)
+
+                if (typeof variation === 'undefined') {
+                    return null
+                }
+
+                return variation
             }
         }
 
