@@ -19,25 +19,27 @@ module.exports = {
       '@nuxtjs/auth'
   ],
 
-  axios: {
-      baseURL: 'http://127.0.0.1:8000/api'
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            url: '/auth/login',
+            method: 'post',
+            propertyName: 'meta.token'
+          },
+          user: {
+            url: '/auth/me',
+            method: 'get',
+            propertyName: 'data'
+          }
+        }
+      }
+    }
   },
 
-  auth: {
-      strategies: {
-          local: {
-              login: {
-                  url: 'auth/login',
-                  method: 'post',
-                  propertyName: 'meta.token'
-              },
-              user: {
-                  url: 'auth/me',
-                  method: 'get',
-                  propertyName: 'data'
-              }
-          }
-      }
+  axios: {
+      baseURL: 'http://127.0.0.1:8000/api'
   },
 
   css: [

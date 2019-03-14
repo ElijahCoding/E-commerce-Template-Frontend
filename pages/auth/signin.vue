@@ -8,14 +8,21 @@
           <div class="field">
             <label class="label">Email</label>
             <div class="control">
-              <input class="input" type="email" placeholder="e.g. alex@codecourse.com">
+              <input class="input"
+                     type="email"
+                     placeholder="email"
+                     v-model="form.email"
+                     >
             </div>
           </div>
 
           <div class="field">
             <label class="label">Password</label>
             <div class="control">
-              <input class="input" type="password">
+              <input class="input"
+                     type="password"
+                     v-model="form.password"
+                     >
             </div>
           </div>
 
@@ -35,9 +42,24 @@
 
 <script>
     export default {
+        data () {
+            return {
+                form: {
+                    email: '',
+                    password: ''
+                }
+            }
+        },
+
         methods: {
-            signin () {
-                console.log('test');
+            async signin () {
+                await this.$auth.loginWith('local', {
+                    data: this.form
+                })
+
+                this.$router.replace({
+                    name: 'index'
+                })
             }
         }
     }
