@@ -15,11 +15,29 @@ module.exports = {
   },
 
   modules: [
-      '@nuxtjs/axios'
+      '@nuxtjs/axios',
+      '@nuxtjs/auth'
   ],
 
   axios: {
       baseURL: 'http://127.0.0.1:8000/api'
+  },
+
+  auth: {
+      strategies: {
+          local: {
+              login: {
+                  url: 'auth/login',
+                  method: 'post',
+                  propertyName: 'meta.token'
+              },
+              user: {
+                  url: 'auth/me',
+                  method: 'get',
+                  propertyName: 'data'
+              }
+          }
+      }
   },
 
   css: [
@@ -33,6 +51,11 @@ module.exports = {
   ** Build configuration
   */
   build: {
+      postcss: {
+          plugins: {
+            'postcss-custom-properties': false
+          }
+    },
     /*
     ** Run ESLint on save
     */

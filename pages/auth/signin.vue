@@ -4,7 +4,7 @@
     <div class="columns is-centered">
       <div class="column is-6">
         <h1 class="title is-4">Sign in</h1>
-        <form action="">
+        <form action="" @submit.prevent="signin">
           <div class="field">
             <label class="label">Email</label>
             <div class="control">
@@ -35,6 +35,10 @@
 
 <script>
     export default {
-
+        methods: {
+            signin () {
+                console.log('test');
+            }
+        }
     }
 </script>
