@@ -6,7 +6,7 @@
             <h1 class="title is-4">Your cart</h1>
 
             <article class="message">
-              cart overview
+                <CartOverview />
             </article>
 
             <a
@@ -23,7 +23,11 @@
 
 
 <script>
+    import CartOverview from '@/components/cart/CartOverview'
+
     export default {
-        
+        components: {
+            CartOverview
+        }
     }
 </script>
