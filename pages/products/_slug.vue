@@ -34,8 +34,6 @@
                                 v-model="form.variation"
                                 />
 
-                                {{ form }}
-
                             <div class="field has-addons" v-if="form.variation">
                                 <div class="control">
                                     <div class="select is-fullwidth">
